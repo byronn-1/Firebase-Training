@@ -4,8 +4,6 @@ import {
   CreateAccountPage,
   EmailConfirmationLanderPage,
   SignInPage,
-  ProtectedRoute,
-  useAuth,
 } from "../auth";
 import { ReservationsListPage } from "../reservations";
 import { RestaurantDetailPage, SearchPage } from "../restaurants";
@@ -20,21 +18,11 @@ import "./App.css";
   app supports.
 */
 export function App() {
-
-  const { isLoading, user } = useAuth();
-
   return (
     <Routes>
       <Route path="/sign-in" element={<SignInPage />} />
       <Route path="/create-account" element={<CreateAccountPage />} />
-      <Route
-        path="/edit-profile"
-        element={
-          <ProtectedRoute isAuthed={!!user} isLoading={isLoading} >
-            <EditProfilePage />
-          </ProtectedRoute>
-        }
-      />
+      <Route path="/edit-profile" element={<EditProfilePage />} />
       <Route
         path="/email-confirmation/success"
         element={<EmailConfirmationLanderPage success />}
@@ -43,36 +31,11 @@ export function App() {
         path="/email-confirmation/failure"
         element={<EmailConfirmationLanderPage />}
       />
-      <Route path="/" element={
-        <ProtectedRoute isAuthed={!!user} isLoading={isLoading} >
-        <ReservationsListPage />
-      </ProtectedRoute>
-}
-      />
-      <Route path="/search" element={
-        <ProtectedRoute isAuthed={!!user} isLoading={isLoading} >
-        <SearchPage />
-          </ProtectedRoute>
-
-      } />
-      <Route path="/restaurants/:id" element={
-        <ProtectedRoute isAuthed={!!user} isLoading={isLoading} >
-        <RestaurantDetailPage />
-          </ProtectedRoute>
-
-      } />
-      <Route path="/write-a-review/:id" element={
-        <ProtectedRoute isAuthed={!!user} isLoading={isLoading}>
-        <WriteAReviewPage />
-          </ProtectedRoute>
-
-      } />
-      <Route path="/review/thank-you" element={
-        <ProtectedRoute isAuthed={!!user} isLoading={isLoading}>
-        <WriteAReviewThankYouPage />
-          </ProtectedRoute>
-
-      } />
+      <Route path="/" element={<ReservationsListPage />} />
+      <Route path="/search" element={<SearchPage />} />
+      <Route path="/restaurants/:id" element={<RestaurantDetailPage />} />
+      <Route path="/write-a-review/:id" element={<WriteAReviewPage />} />
+      <Route path="/review/thank-you" element={<WriteAReviewThankYouPage />} />
     </Routes>
   );
 }
