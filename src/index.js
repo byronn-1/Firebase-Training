@@ -5,15 +5,18 @@ import { App, serviceWorker } from './app';
 
 import { BrowserRouter } from 'react-router-dom';
 
+import Firebase, { FirebaseContext } from './Firebase';
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 
 root.render(
-  <React.StrictMode>
+
+    <FirebaseContext.Provider value={new Firebase()}>
     <BrowserRouter>
     <App />
     </BrowserRouter>
-  </React.StrictMode>
+    </FirebaseContext.Provider>
+
 );
 
 
