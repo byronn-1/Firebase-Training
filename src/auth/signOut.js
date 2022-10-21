@@ -1,4 +1,5 @@
-import firebase from 'firebase/compat/app';
+import firebase from "firebase/compat";
+
 
 
 export const signOut = async () => {

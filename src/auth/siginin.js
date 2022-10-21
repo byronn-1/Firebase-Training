@@ -1,4 +1,5 @@
-import firebase from 'firebase/compat/auth';
+import firebase from "firebase/compat";
+
 
 
 export const signIn = async (email, password) => {
