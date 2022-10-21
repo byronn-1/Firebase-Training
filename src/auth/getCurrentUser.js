@@ -1,4 +1,4 @@
-import firebase from "firebase/compat";
+import firebase from "firebase/compat/app";
 
 
 
@@ -7,7 +7,7 @@ import firebase from "firebase/compat";
 /* 
 might be getCurrentUser()
 */
- export const currentUser = () => {
+ export const getCurrentUser = () => {
      const user = firebase.auth().currentUser;
 
         if (!user) return null
